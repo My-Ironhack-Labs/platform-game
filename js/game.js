@@ -57,6 +57,7 @@ const game = {
             this.isCollision()
             
             this.isPlatform()
+            console.log(this.isPlatform())
 
         }, 1000 / 60)        
     },
@@ -88,7 +89,7 @@ const game = {
 
     setEventListeners() {
         document.onkeyup = e => {            
-            if (true && e.key === this.keys.right) {
+            if (this.isPlatform() && e.key === this.keys.right) {
                 this.player.move(0)
 
 
@@ -154,13 +155,17 @@ const game = {
                 this.player.posY + this.player.height >= plat.platformPos.y &&
                 this.player.posX <= plat.platformPos.x + plat.platformSize.w) {
                     
-                // this.player.posX -= 5;
-                true
+                this.player.posX -= 5
+                return true
             } else {
-                false
+                return false
             }
         }); 
         
     },
+
+
+
+
 
 }
